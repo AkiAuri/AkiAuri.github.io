@@ -6,141 +6,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <style>
-        /* Reset Styles */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         }
 
         /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #222; /* Dark background */
-            color: #fff; /* Light text */
+        font-family: Arial, sans-serif;
+        background-color: #222; /* Dark background */
+        color: #fff; /* Light text */
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        max-width: 80%; /* Change to a percentage */
+        margin: 0 auto;
+        padding: 0 2%; /* Use percentages for padding */
         }
 
         /* Header Styles */
         header {
-            padding: 20px 0;
+        padding: 5% 0; /* Use percentages for padding */
         }
 
         .logo {
-			width: 25%;
+        width: 25%;
         }
-		
-		img{
-			height: 50%;
-			width: 50%;
-		}
+
+        img {
+        height: 50%;
+        width: 50%;
+        }
 
         nav ul {
-            list-style-type: none;
-			margin-left: 951px;
+        list-style-type: none;
+        margin-left: calc(100% - 25%); /* Calculate based on container width */
         }
 
         nav ul li {
-            display: inline-block;
-            margin-left: 20px;
-			position:relative;
+        display: inline-block;
+        margin-left: 2.5%; /* Use percentages for margin */
+        position: relative;
         }
 
         nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            transition: color 0.3s ease;
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: #aaa;
+        color: #aaa;
         }
 
         /* Hero Section Styles */
         .hero {
-            padding: 100px 0;
-            text-align: center;
+        padding: 15vh 0; /* Use viewport height for padding */
+        text-align: center;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+        font-size: 4rem; /* Use rem for font size (relative to root) */
+        margin-bottom: 5%; /* Use percentages for margin */
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
+        font-size: 1.25rem; /* Use rem for font size */
+        margin-bottom: 10%; /* Use percentages for margin */
         }
 
         /* Table Styles */
         table {
-            border-collapse: collapse;
-            margin: 0 auto;
-            table-layout: fixed;
+        border-collapse: collapse;
+        margin: 0 auto;
+        table-layout: fixed;
         }
 
         td {
-            width: 50px;
-            height: 50px;
-            font-size: 30px;
-            text-align: center;
-            color: #ffffff;
-            border-radius: 10px;
-            padding-top: 5px;
-            background-color: #333333;
-            border: solid #D7EDDB;
+        width: calc(100% / (number of columns)); /* Dynamic width based on columns */
+        height: 5vh; /* Use viewport height for height */
+        font-size: 3rem; /* Use rem for font size */
+        text-align: center;
+        color: #ffffff;
+        border-radius: 10px;
+        padding-top: 1vh; /* Use viewport height for padding */
+        background-color: #333333;
+        border: solid #D7EDDB;
         }
 
         /* Style the keyboard container */
         #keyboard {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 600px;
-            background-color: transparent;
-            margin: 50px auto 0;
-            align-items: center; /* Center horizontally */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 75%; /* Adjust as needed */
+        background-color: transparent;
+        margin: 12.5vh auto 0; /* Use viewport height for margin */
+        align-items: center; /* Center horizontally */
         }
 
         /* Style the rows of keys */
         .row {
-            display: flex;
-            flex-wrap: wrap;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #222;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #222;
         }
 
         /* Style the keys */
         .key {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 15px;
-            margin: 5px; /* Increased margin for spacing */
-            border: 1px solid #ccc;
-            cursor: pointer;
-            background-color: #eee;
-            border-radius: 5px; /* Added border radius for a slight round edge */
-			transition: all .5s ease;
-			transform: scale(1);
+        text-align: center;
+        font-size: 1.125rem; /* Use rem for font size */
+        padding: 2.5vh 3.75vh; /* Use viewport height for padding */
+        margin: 1.25vh; /* Use viewport height for margin */
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background-color: #eee;
+        border-radius: 5px;
+        transition: all 0.5s ease;
+        transform: scale(1);
         }
-		
-		button:hover {
-			background-color: black;
-			color: white;
-			transform: scale(.85) perspective(1px)
-		}
+
+        button:hover {
+        background-color: black;
+        color: white;
+        transform: scale(0.85) perspective(1px);
+        }
 
         /* Style the Enter key */
         .key.Enter {
-            flex: 1 0 50%;
+        flex: 1 0 50%;
         }
+
     </style>
 
 </head>
