@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222; /* Dark background */
+            color: #fff; /* Light text */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+        }
+
+        .logo {
+			width: 25%;
+        }
+		
+		img{
+			height: 50%;
+			width: 50%;
+		}
+
+        nav ul {
+            list-style-type: none;
+			margin-left: 951px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+			position:relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #aaa;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 10px;
+            padding-top: 5px;
+            background-color: #333333;
+            border: solid #D7EDDB;
+        }
+
+        /* Style the keyboard container */
+        #keyboard {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 600px;
+            background-color: transparent;
+            margin: 50px auto 0;
+            align-items: center; /* Center horizontally */
+        }
+
+        /* Style the rows of keys */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+        }
+
+        /* Style the keys */
+        .key {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 15px;
+            margin: 5px; /* Increased margin for spacing */
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: #eee;
+            border-radius: 5px; /* Added border radius for a slight round edge */
+			transition: all .5s ease;
+			transform: scale(1);
+        }
+		
+		button:hover {
+			background-color: black;
+			color: white;
+			transform: scale(.85) perspective(1px)
+		}
+
+        /* Style the Enter key */
+        .key.Enter {
+            flex: 1 0 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <header>
+            <div class="container">
+                <div class="logo">
+					<img src="C:/Users/202310487/Downloads/WordleLogo.png">
+					<p>Temp. Logo [DEBUG, DO NOT RELEASE]</p>
+				</div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td id="cell1" class="box"></td>
+							<td id="cell2" class="box"></td>
+							<td id="cell3" class="box"></td>
+							<td id="cell4" class="box"></td>
+							<td id="cell5" class="box"></td>
+							<td id="cell6" class="box"></td>
+							<td id="cell7" class="box"></td>
+                        </tr>
+                        <tr>
+                            <td id="cell8" class="box"></td>
+							<td id="cell9" class="box"></td>
+							<td id="cell10" class="box"></td>
+							<td id="cell11" class="box"></td>
+							<td id="cell12" class="box"></td>
+							<td id="cell13" class="box"></td>
+							<td id="cell14" class="box"></td>
+                        </tr>
+                        <tr>
+                            <td id="cell15" class="box"></td>
+							<td id="cell16" class="box"></td>
+							<td id="cel117" class="box"></td>
+							<td id="cell18" class="box"></td>
+							<td id="cell19" class="box"></td>
+							<td id="cell20" class="box"></td>
+							<td id="cell21" class="box"></td>
+                        </tr>
+                        <tr>
+                            <td id="cell22" class="box"></td>
+							<td id="cell23" class="box"></td>
+							<td id="cell24" class="box"></td>
+							<td id="cell25" class="box"></td>
+							<td id="cell26" class="box"></td>
+							<td id="cell27" class="box"></td>
+							<td id="cell28" class="box"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Keyboard Table Section -->
+                <div id="keyboard" class="keyboard">
+                    <div class="row">
+                        <button type="button" class="key">Q</button>
+                        <button type="button" class="key">W</button>
+                        <button type="button" class="key">E</button>
+                        <button type="button" class="key">R</button>
+                        <button type="button" class="key">T</button>
+                        <button type="button" class="key">Y</button>
+                        <button type="button" class="key">U</button>
+                        <button type="button" class="key">I</button>
+                        <button type="button" class="key">O</button>
+                        <button type="button" class="key">P</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="key">A</button>
+                        <button type="button" class="key">S</button>
+                        <button type="button" class="key">D</button>
+                        <button type="button" class="key">F</button>
+                        <button type="button" class="key">G</button>
+                        <button type="button" class="key">H</button>
+                        <button type="button" class="key">J</button>
+                        <button type="button" class="key">K</button>
+                        <button type="button" class="key">L</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="key">Backspace</button>
+                        <button type="button" class="key">Z</button>
+                        <button type="button" class="key">X</button>
+                        <button type="button" class="key">C</button>
+                        <button type="button" class="key">V</button>
+                        <button type="button" class="key">B</button>
+                        <button type="button" class="key">N</button>
+                        <button type="button" class="key">M</button>
+                        <button type="button" class="key">Enter</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter Grid Section -->
+
+    </div>
+
+    <script>
+        var buttons = document.querySelectorAll('.key');
+        var cells = document.querySelectorAll('.box');
+        var secretWord = 'EXAMPLE'; // example word
+        var letterCount = 0; // Add this line
+
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var letter = this.textContent;
+                if (letter === 'Backspace') {
+                    // Delete the last pressed character
+                    for (var i = cells.length - 1; i >= 0; i--) {
+                        if (cells[i].textContent !== '') {
+                            cells[i].textContent = '';
+                            letterCount--; // Decrement the count
+                            break;
+                        }
+                    }
+                } else if (letter === 'Enter') {
+                    // Check the answer
+                    var answer = '';
+                    cells.forEach(function(cell) {
+                        answer += cell.textContent;
+                    });
+
+                    if (answer === secretWord) {
+                        console.log('Congratulations! You right!');
+                    } else {
+                        var feedback = '';
+                        for (var i = 0; i < secretWord.length; i++) {
+                            if (answer[i] === secretWord[i]) {
+                                feedback += 'Green ';
+                            } else if (secretWord.includes(answer[i])) {
+                                feedback += 'Yellow ';
+                            } else {
+                                feedback += 'Red ';
+                            }
+                        }
+                        console.log('Feedback: ' + feedback);
+                    }
+
+                    letterCount = 0; // Reset the count
+                } else {
+                    if (letterCount >= 7) return; // Add this line
+                    for (var i = 0; i < cells.length; i++) {
+                        if (cells[i].textContent === '') {
+                            cells[i].textContent = letter;
+                            letterCount++; // Increment the count
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
