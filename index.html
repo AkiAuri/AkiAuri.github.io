@@ -16,8 +16,8 @@
         /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #222; /* Dark background */
-            color: #fff; /* Light text */
+            background-color: #222;
+            color: #fff;
         }
 
         .container {
@@ -29,26 +29,25 @@
         /* Header Styles */
         header {
             padding: 20px 0;
+            text-align: center;
         }
 
-        .logo {
-			width: 25%;
+        .logo img {
+           height: 80px; 
+			width: 80px; 
+			border-radius: 50%; 
         }
-		
-		img{
-			height: 50%;
-			width: 50%;
-		}
 
         nav ul {
             list-style-type: none;
-			margin-left: 951px;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
         }
 
         nav ul li {
-            display: inline-block;
             margin-left: 20px;
-			position:relative;
+            position: relative;
         }
 
         nav ul li a {
@@ -59,6 +58,34 @@
 
         nav ul li a:hover {
             color: #aaa;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            top: 10px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        /* Show dropdown when hovering over parent */
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
         }
 
         /* Hero Section Styles */
@@ -79,21 +106,21 @@
 
         /* Table Styles */
         table {
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 10px;
             margin: 0 auto;
-            table-layout: fixed;
         }
 
         td {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             font-size: 30px;
             text-align: center;
             color: #ffffff;
             border-radius: 10px;
             padding-top: 5px;
-            background-color: #333333;
-            border: solid #D7EDDB;
+            background-color: #3C3633;
+            border: solid black;
         }
 
         /* Style the keyboard container */
@@ -104,13 +131,14 @@
             max-width: 600px;
             background-color: transparent;
             margin: 50px auto 0;
-            align-items: center; /* Center horizontally */
+            align-items: center;
         }
 
         /* Style the rows of keys */
         .row {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             font-family: sans-serif;
             margin: 0;
             padding: 0;
@@ -122,27 +150,65 @@
             text-align: center;
             font-size: 18px;
             padding: 10px 15px;
-            margin: 5px; /* Increased margin for spacing */
+            margin: 5px;
             border: 1px solid #ccc;
             cursor: pointer;
             background-color: #eee;
-            border-radius: 5px; /* Added border radius for a slight round edge */
-			transition: all .5s ease;
-			transform: scale(1);
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            transform: scale(1);
         }
-		
-		button:hover {
-			background-color: black;
-			color: white;
-			transform: scale(.85) perspective(1px)
-		}
+
+        button:hover {
+            background-color:
+			black;
+            color: white;
+            transform: scale(0.85) perspective(1px);
+        }
 
         /* Style the Enter key */
         .key.Enter {
             flex: 1 0 50%;
         }
-    </style>
 
+       /* Responsive Styles */
+@media (max-width: 600px) and (orientation: landscape) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    td {
+        width: 40%;
+        height: 40%;
+        font-size: 20px;
+        padding-top: 2px;
+    }
+
+    .key {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .key.Enter {
+        flex: 1 0 45%;
+    }
+
+    nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+    </style>
 </head>
 
 <body>
@@ -150,64 +216,77 @@
         <header>
             <div class="container">
                 <div class="logo">
-					<img src="C:/Users/202310487/Downloads/WordleLogo.png">
-					<p>Temp. Logo [DEBUG, DO NOT RELEASE]</p>
-				</div>
+                    <img src="https://i.imgur.com/d1oWMj1.png">
+                </div>
                 <nav>
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
+                        <li class="dropdown">
+                            <a href="#">Game Mode</a>
+                            <ul class="dropdown-content">
+                                <li><a href="#">Standard</a></li>
+                                <li><a href="#">Word Rush</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Difficulty</a>
+                            <ul class="dropdown-content">
+                                <li><a href="#" id="easy">Easy</a></li>
+                                <li><a href="#" id="medium">Medium</a></li>
+                                <li><a href="#" id="hard">Hard</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td id="cell1" class="box"></td>
-							<td id="cell2" class="box"></td>
-							<td id="cell3" class="box"></td>
-							<td id="cell4" class="box"></td>
-							<td id="cell5" class="box"></td>
-							<td id="cell6" class="box"></td>
-							<td id="cell7" class="box"></td>
-                        </tr>
-                        <tr>
-                            <td id="cell8" class="box"></td>
-							<td id="cell9" class="box"></td>
-							<td id="cell10" class="box"></td>
-							<td id="cell11" class="box"></td>
-							<td id="cell12" class="box"></td>
-							<td id="cell13" class="box"></td>
-							<td id="cell14" class="box"></td>
-                        </tr>
-                        <tr>
-                            <td id="cell15" class="box"></td>
-							<td id="cell16" class="box"></td>
-							<td id="cel117" class="box"></td>
-							<td id="cell18" class="box"></td>
-							<td id="cell19" class="box"></td>
-							<td id="cell20" class="box"></td>
-							<td id="cell21" class="box"></td>
-                        </tr>
-                        <tr>
-                            <td id="cell22" class="box"></td>
-							<td id="cell23" class="box"></td>
-							<td id="cell24" class="box"></td>
-							<td id="cell25" class="box"></td>
-							<td id="cell26" class="box"></td>
-							<td id="cell27" class="box"></td>
-							<td id="cell28" class="box"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <center>
+                    <table id="game-table">
+                        <tbody>
+                            <tr>
+                                <td id="cell1" class="box"></td>
+                                <td id="cell2" class="box"></td>
+                                <td id="cell3" class="box"></td>
+                                <td id="cell4" class="box"></td>
+                                <td id="cell5" class="box"></td>
+                            </tr>
+                            <tr>
+                                <td id="cell6" class="box"></td>
+                                <td id="cell7" class="box"></td>
+                                <td id="cell8" class="box"></td>
+                                <td id="cell9" class="box"></td>
+                                <td id="cell10" class="box"></td>
+                            </tr>
+                            <tr>
+                                <td id="cell11" class="box"></td>
+                                <td id="cell12" class="box"></td>
+                                <td id="cell13" class="box"></td>
+                                <td id="cell14" class="box"></td>
+                                <td id="cell15" class="box"></td>
+                            </tr>
+                            <tr>
+                                <td id="cell16" class="box"></td>
+                                <td id="cell17" class="box"></td>
+                                <td id="cell18" class="box"></td>
+                                <td id="cell19" class="box"></td>
+                                <td id="cell20" class="box"></td>
+                            </tr>
+                            <tr>
+                                <td id="cell21" class="box"></td>
+                                <td id="cell22" class="box"></td>
+                                <td id="cell23" class="box"></td>
+                                <td id="cell24" class="box"></td>
+                                <td id="cell25" class="box"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </center>
 
-                <!-- Keyboard Table Section -->
                 <div id="keyboard" class="keyboard">
                     <div class="row">
                         <button type="button" class="key">Q</button>
@@ -246,67 +325,148 @@
                 </div>
             </div>
         </section>
-
-        <!-- Letter Grid Section -->
-
     </div>
 
     <script>
-        var buttons = document.querySelectorAll('.key');
-        var cells = document.querySelectorAll('.box');
-        var secretWord = 'EXAMPLE'; // example word
-        var letterCount = 0; // Add this line
+    // Select all elements with the class 'key' and 'box'
+    var buttons = document.querySelectorAll('.key');
+    var cells = document.querySelectorAll('.box');
 
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var letter = this.textContent;
-                if (letter === 'Backspace') {
-                    // Delete the last pressed character
-                    for (var i = cells.length - 1; i >= 0; i--) {
-                        if (cells[i].textContent !== '') {
-                            cells[i].textContent = '';
-                            letterCount--; // Decrement the count
-                            break;
-                        }
-                    }
-                } else if (letter === 'Enter') {
-                    // Check the answer
-                    var answer = '';
-                    cells.forEach(function(cell) {
-                        answer += cell.textContent;
-                    });
+    // Initialize the letter count and maximum letters
+    var letterCount = 0;
+    var maxLetters = 5;
+    var secretWord = ''; // Variable to store the secret word
 
-                    if (answer === secretWord) {
-                        console.log('Congratulations! You right!');
-                    } else {
-                        var feedback = '';
-                        for (var i = 0; i < secretWord.length; i++) {
-                            if (answer[i] === secretWord[i]) {
-                                feedback += 'Green ';
-                            } else if (secretWord.includes(answer[i])) {
-                                feedback += 'Yellow ';
-                            } else {
-                                feedback += 'Red ';
-                            }
-                        }
-                        console.log('Feedback: ' + feedback);
-                    }
+    // Function to fetch a random word from the appropriate file
+    function fetchRandomWord(filename, size) {
+        return fetch(filename)
+            .then(response => response.text()) // Read the text from the response
+            .then(data => {
+                var words = data.split('\n').filter(word => word.length === size); // Split into an array of words and filter by length
+                var randomIndex = Math.floor(Math.random() * words.length); // Select a random index
+                return words[randomIndex]; // Return the random word
+            });
+    }
 
-                    letterCount = 0; // Reset the count
-                } else {
-                    if (letterCount >= 7) return; // Add this line
-                    for (var i = 0; i < cells.length; i++) {
-                        if (cells[i].textContent === '') {
-                            cells[i].textContent = letter;
-                            letterCount++; // Increment the count
-                            break;
-                        }
+    // Add event listeners to each button to handle clicks
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var letter = this.textContent; // Get the text content of the clicked button
+            handleLetter(letter); // Call the handleLetter function with the letter
+        });
+    });
+
+    // Add an event listener to the document to handle keydown events
+    document.addEventListener('keydown', function(event) {
+        var letter = event.key.toUpperCase(); // Convert the key to uppercase
+        handleLetter(letter); // Call the handleLetter function with the letter
+    });
+
+    // Define the handleLetter function
+    function handleLetter(letter) {
+        var validLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Define valid letters
+        if (letterCount < maxLetters && validLetters.includes(letter)) { // Check if the letter is valid and within limit
+            for (var i = 0; i < cells.length; i++) {
+                if (cells[i].textContent === '') { // Find the first empty cell
+                    cells[i].textContent = letter; // Set the cell's text content to the letter
+                    letterCount++; // Increment the letter count
+                    break;
+                }
+            }
+        } else if (letter === 'Backspace') { // Handle backspace key
+            if (letterCount > 0) {
+                for (var i = cells.length - 1; i >= 0; i--) {
+                    if (cells[i].textContent !== '') { // Find the last filled cell
+                        cells[i].textContent = ''; // Clear the cell's text content
+                        letterCount--; // Decrement the letter count
+                        break;
                     }
                 }
-            });
-        });
-    </script>
+            }
+        } else if (letter === 'Enter' && letterCount === maxLetters) { // Handle enter key
+            console.clear(); // Clear the console for feedback
 
+            var answer = ''; // Initialize the answer string
+            cells.forEach(function(cell) {
+                answer += cell.textContent; // Build the answer string from the cell contents
+            });
+
+            fetch(maxLetters + 'letterwords.txt') // Fetch the word list file based on maxLetters
+                .then(response => response.text())
+                .then(data => {
+                    var validWords = data.split('\n'); // Split the file contents into an array of words
+                    if (validWords.includes(answer)) { // Check if the answer is a valid word
+                        if (answer === secretWord) { // Check if the answer matches the secret word
+                            console.log('Congratulations! You got it right!');
+                        } else { // Provide feedback for each letter in the answer
+                            var feedback = '';
+                            for (var i = 0; i < secretWord.length; i++) {
+                                if (answer[i] === secretWord[i]) {
+                                    feedback += 'Green '; // Correct letter in correct position
+                                } else if (secretWord.includes(answer[i])) {
+                                    feedback += 'Yellow '; // Correct letter in incorrect position
+                                } else {
+                                    feedback += 'Red '; // Incorrect letter
+                                }
+                            }
+                            console.log('Feedback: ' + feedback); // Log the feedback
+                        }
+                    } else {
+                        console.log('Invalid word'); // Log if the word is not valid
+                    }
+                });
+            letterCount = 0; // Reset the letter count
+        }
+    }
+
+    // Define the resetGame function
+    function resetGame(difficulty) {
+        var table = document.getElementById('game-table');
+        var size; // Variable to store the size of the grid
+        var filename; // Variable to store the filename based on difficulty
+
+        switch (difficulty) {
+            case 'easy':
+                size = 5;
+                maxLetters = 5;
+                filename = '5letterwords.txt'; // Filename for easy difficulty
+                break;
+            case 'medium':
+                size = 7;
+                maxLetters = 7;
+                filename = '7letterwords.txt'; // Filename for medium difficulty
+                break;
+            case 'hard':
+                size = 9;
+                maxLetters = 9;
+                filename = '9letterwords.txt'; // Filename for hard difficulty
+                break;
+        }
+
+        fetchRandomWord(filename, size).then(word => {
+            secretWord = word; // Set the secret word
+            console.log('Secret Word:', secretWord); // For debugging purposes
+
+            var newTableContent = ''; // Initialize new table content
+            for (var i = 0; i < size; i++) {
+                newTableContent += '<tr>';
+                for (var j = 0; j < size; j++) {
+                    newTableContent += '<td class="box"></td>'; // Add a new cell to the table
+                }
+                newTableContent += '</tr>';
+            }
+            table.querySelector('tbody').innerHTML = newTableContent; // Set the new table content
+            cells = document.querySelectorAll('.box'); // Update the cells variable
+            letterCount = 0; // Reset the letter count
+        });
+    }
+
+    // Add event listeners to the difficulty buttons to reset the game with the corresponding difficulty
+    document.getElementById('easy').addEventListener('click', function() { resetGame('easy'); });
+    document.getElementById('medium').addEventListener('click', function() { resetGame('medium'); });
+    document.getElementById('hard').addEventListener('click', function() { resetGame('hard'); });
+
+    </script>
 </body>
 
 </html>
