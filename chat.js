@@ -14,14 +14,17 @@ function hasNameLock(name) {
   return db.ref('activeUsers/' + encodeURIComponent(name)).once('value').then(snap => !!snap.val());
 }
 function takeNameLock(name) {
+  const uid = firebase.auth().currentUser.uid;
   return db.ref('activeUsers/' + encodeURIComponent(name)).set({
-    clientId: CLIENT_ID,
+    clientId: uid,
     timestamp: Date.now()
   });
 }
+
 function releaseNameLock(name) {
+  const uid = firebase.auth().currentUser.uid;
   return db.ref('activeUsers/' + encodeURIComponent(name)).once('value').then(snap => {
-    if (snap.val() && snap.val().clientId === CLIENT_ID) {
+    if (snap.val() && snap.val().clientId === uid) {
       return db.ref('activeUsers/' + encodeURIComponent(name)).remove();
     }
   });
