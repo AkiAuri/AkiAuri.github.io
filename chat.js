@@ -1,3 +1,15 @@
+// --- Ensure Firebase Auth before any DB operation ---
+async function ensureFirebaseAuth() {
+  if (!firebase.auth().currentUser) {
+    try {
+      await firebase.auth().signInAnonymously();
+    } catch (e) {
+      alert("Could not authenticate with Firebase. Please try again.");
+      throw e;
+    }
+  }
+}
+
 // --- Unique name lock logic start ---
 const CLIENT_ID = (function() {
   let id = localStorage.getItem('chatClientId');
@@ -10,19 +22,26 @@ const CLIENT_ID = (function() {
 
 const db = window._fb_db;
 
-function hasNameLock(name) {
+async function hasNameLock(name) {
+  await ensureFirebaseAuth();
   return db.ref('activeUsers/' + encodeURIComponent(name)).once('value').then(snap => !!snap.val());
 }
-function takeNameLock(name) {
-  const uid = firebase.auth().currentUser.uid;
+async function takeNameLock(name) {
+  await ensureFirebaseAuth();
+  const user = firebase.auth().currentUser;
+  if (!user) throw new Error("Not authenticated!");
+  const uid = user.uid;
   return db.ref('activeUsers/' + encodeURIComponent(name)).set({
     clientId: uid,
     timestamp: Date.now()
   });
 }
 
-function releaseNameLock(name) {
-  const uid = firebase.auth().currentUser.uid;
+async function releaseNameLock(name) {
+  await ensureFirebaseAuth();
+  const user = firebase.auth().currentUser;
+  if (!user) return;
+  const uid = user.uid;
   return db.ref('activeUsers/' + encodeURIComponent(name)).once('value').then(snap => {
     if (snap.val() && snap.val().clientId === uid) {
       return db.ref('activeUsers/' + encodeURIComponent(name)).remove();
@@ -86,6 +105,7 @@ function updateSidebarUI(name) {
     btn.textContent = "Delete All Chat Logs";
     btn.className = "sparrow-btn";
     btn.onclick = async function() {
+      await ensureFirebaseAuth();
       if (confirm("Are you sure you want to delete ALL chat logs? This cannot be undone.")) {
         await db.ref('chat').remove();
         alert("All chat logs deleted.");
@@ -134,6 +154,7 @@ document.getElementById('logout-btn').addEventListener('click', async function()
 // Main chat logic
 let userName;
 (async function () {
+  await ensureFirebaseAuth();
   userName = await getUserName();
   updateSidebarUI(userName);
 
@@ -155,8 +176,9 @@ let userName;
   });
 
   // Send message
-  document.getElementById('chat-form').addEventListener('submit', function(e) {
+  document.getElementById('chat-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+    await ensureFirebaseAuth();
     const input = document.getElementById('message');
     const text = input.value.trim();
     if (!text) return;
