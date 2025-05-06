@@ -1,5 +1,6 @@
 (function(){
-  var a="W3siMCI6IkFweUl6YVN5RGhKTU1XYWxsYWRaUTNYdENLZW5Mcm1rQXl0M1RnOVVRIiwiMSI6ImRvbGxpc3Rhbm5vdGVzLmZpcmViYXBwLmNvbSIsIjIiOiJkb2xsaXN0YW5ub3RlcyIsIjMiOiJkb2xsaXN0YW5ub3Rlcy5maXJlYmFzZXN0b3JhZ2UuYXBwIiwiNCI6IjYwMTA2OTQxNTY2NCIsIjUiOiIxOjYwMTA2OTQxNTY2NDp3ZWI6YWRmOTcyOTU3NDM2YjAxYmM2NjM1IiwiNiI6IkctNVE1UVpGTUdRRiJ9XQ==";
+  // New base64: [apiKey, authDomain, projectId, databaseURL, storageBucket, messagingSenderId, appId, measurementId]
+  var a="W3siMCI6IkFweUl6YVN5RGhKTU1XYWttWk1ETnBJZ2s2VElYZ0JaaldubldFb1QiLCIxIjoiZG9sbGlzdGFubm90ZXMuZmlyZWJhcHAuY29tIiwiMiI6ImRvbGxpc3Rhbm5vdGVzIiwiMyI6Imh0dHBzOi8vZG9sbGlzdGFubm90ZXMtZGVmYXVsdC1ydGRiLmFzaWEtc291dGhlYXN0MS5maXJlYmFzZWRhdGFiYXNlLmFwcC8iLCI0IjoiZG9sbGlzdGFubm90ZXMuZmlyZWJhc2VzdG9yYWdlLmFwcCIsIjUiOiI2MDEwNjk0MTU2NjQiLCI2IjoiMTo2MDEwNjk0MTU2NjQ6d2ViOjM1Y2RjMjNjYzMxZDBiYzRiYzY2MzUiLCI3IjoiRy00QzJYWUVEUzFFIn1d";
   var b=function(c){return window.atob?atob(c):c;};
   var d=function(e){return JSON.parse(e)[0];};
   var f=function(g){return typeof g==='string'&&g.length>0;};
@@ -9,13 +10,14 @@
     apiKey: f(j['0'])?h(j['0']):'',
     authDomain: f(j['1'])?h(j['1']):'',
     projectId: f(j['2'])?h(j['2']):'',
-    storageBucket: f(j['3'])?h(j['3']):'',
-    messagingSenderId: f(j['4'])?h(j['4']):'',
-    appId: f(j['5'])?h(j['5']):'',
-    measurementId: f(j['6'])?h(j['6']):''
+    databaseURL: f(j['3'])?j['3']:'',
+    storageBucket: f(j['4'])?h(j['4']):'',
+    messagingSenderId: f(j['5'])?h(j['5']):'',
+    appId: f(j['6'])?h(j['6']):'',
+    measurementId: f(j['7'])?h(j['7']):''
   };
   var l=function(m){
-    var n=['apiKey','authDomain','projectId','storageBucket','messagingSenderId','appId','measurementId'];
+    var n=['apiKey','authDomain','projectId','databaseURL','storageBucket','messagingSenderId','appId','measurementId'];
     var o=n.every(function(p){return f(m[p]);});
     if(o){
       (function(q){
