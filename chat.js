@@ -1,3 +1,4 @@
+const db = window._fb_db;
 const chatbox = document.getElementById("chatbox");
 const chatForm = document.getElementById("chat-form");
 const messageInput = document.getElementById("message");
