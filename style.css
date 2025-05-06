@@ -1,15 +1,152 @@
+:root {
+    --bg: #0a0a0a;
+    --text: #fff;
+    --secondary: #222;
+    --border: #333;
+    --input-bg: #101010;
+    --input-border: #444;
+    --radius: 1.2em;
+    --font-mono: 'Fira Mono', 'Consolas', monospace;
+}
+
+/* Reset and base styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono), monospace;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Title */
+.title {
+    font-size: 3vw;
+    margin: 0.5em 0 0.2em 0.2em;
+    font-family: var(--font-mono), monospace;
+    letter-spacing: 0.05em;
+}
+
+/* Outer PDA-style container */
+.pda-container {
+    margin: 0 2vw 2vw 2vw;
+    border: 1px solid var(--border);
+    border-radius: 0.2em;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    height: 80vh;
+    box-sizing: border-box;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 8vw;
+    }
+    .pda-container {
+        margin: 0 1vw 1vw 1vw;
+        min-height: 80vh;
+        height: 86vh;
+    }
+}
+
+/* Chatbox styling */
 .chatbox {
-    height: 200px;
+    flex: 1 1 auto;
+    padding: 2vw 1vw;
+    margin: 0;
+    font-family: var(--font-mono), monospace;
+    font-size: 1.15em;
+    background: var(--bg);
+    color: var(--text);
     overflow-y: auto;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 5px;
-    font-family: monospace;
-    background: #f8f8f8;
+    border-bottom: 1px solid var(--border);
+    min-height: 200px;
+    word-break: break-word;
 }
-input[type="text"] {
-    margin-right: 5px;
+
+@media (max-width: 600px) {
+    .chatbox {
+        padding: 2vw 0.6vw;
+        font-size: 1em;
+        min-height: 120px;
+    }
 }
-button {
-    margin-top: 5px;
+
+/* Chat input bar styling */
+.chat-input-bar {
+    display: flex;
+    align-items: stretch;
+    border-radius: var(--radius);
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    margin: 2vw 1vw 1vw 1vw;
+    padding: 0;
+    box-sizing: border-box;
+    height: 3.2em;
+    overflow: hidden;
+}
+
+.chat-input-bar input[type="text"] {
+    flex: 1 1 auto;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.25em;
+    padding: 0 1em;
+    font-family: var(--font-mono), monospace;
+    outline: none;
+}
+
+.chat-input-bar button {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.6em;
+    padding: 0 1em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.chat-input-bar button:active,
+.chat-input-bar button:focus {
+    color: #aaa;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .chat-input-bar {
+        margin: 2vw 0vw 1vw 0vw;
+        height: 2.8em;
+    }
+    .chat-input-bar input[type="text"] {
+        font-size: 1em;
+        padding: 0 0.5em;
+    }
+    .chat-input-bar button {
+        font-size: 1.2em;
+        padding: 0 0.5em;
+    }
+}
+
+/* Message formatting */
+.message {
+    margin-bottom: 0.7em;
+    white-space: pre-line;
+}
+.message .timestamp {
+    color: #aaa;
+    font-size: 0.94em;
+}
+.message .sender {
+    font-weight: bold;
+    color: var(--text);
 }

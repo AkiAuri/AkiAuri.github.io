@@ -2,27 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>Dollistan Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-
+<h1 class="title">Dollistan Notes:</h1>
+<div class="pda-container">
     <div id="chatbox" class="chatbox"></div>
-    <input id="name" type="text" placeholder="Name" />
-    <input id="message" type="text" placeholder="Type your message..." />
-    <button onclick="sendMessage()">Send</button>
-
-    <button id="clickMe">Click Me!</button>
-
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-    <!-- Firebase init (obfuscated) -->
-    <script src="firebase-client.js"></script>
-    <!-- Chat logic -->
-    <script src="chat.js"></script>
-    <!-- Your old script -->
-    <script src="script.js"></script>
+    <form id="chat-form" class="chat-input-bar" autocomplete="off">
+        <input id="message" type="text" placeholder="Text Message Here" autocomplete="off" />
+        <button id="sendBtn" type="submit" aria-label="Send">⮞</button>
+    </form>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="firebase-client.js"></script>
+<script src="chat.js"></script>
 </body>
 </html>
