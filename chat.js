@@ -63,26 +63,76 @@ async function getUserName() {
 // --- Unique name lock logic end ---
 
 // UI logic for sidebar
-function updateSidebarUsername(name) {
-  document.getElementById('sidebar-username').textContent = name ? `Signed in as: ${name}` : '';
+function updateSidebarUI(name) {
+  // Special Kyue button
+  const kyueDiv = document.getElementById('kyue-btn-container');
+  kyueDiv.innerHTML = '';
+  if (name === "'Kyue") {
+    const btn = document.createElement('button');
+    btn.textContent = "Kyue Power";
+    btn.className = "kyue-btn";
+    btn.onclick = () => alert("Special Kyue action!");
+    kyueDiv.appendChild(btn);
+  }
+
+  // Sparrow dev erase button
+  const sparrowDiv = document.getElementById('sparrow-btn-container');
+  sparrowDiv.innerHTML = '';
+  if (name === "'Sparrow") {
+    const btn = document.createElement('button');
+    btn.textContent = "Delete All Chat Logs";
+    btn.className = "sparrow-btn";
+    btn.onclick = async function() {
+      if (confirm("Are you sure you want to delete ALL chat logs? This cannot be undone.")) {
+        await db.ref('chat').remove();
+        alert("All chat logs deleted.");
+        // Optionally clear chatbox UI
+        document.getElementById('chatbox').innerHTML = '';
+      }
+    };
+    sparrowDiv.appendChild(btn);
+  }
 }
+
+// Sidebar toggle for mobile
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+sidebarToggle.addEventListener('click', function() {
+  sidebar.classList.add('open');
+});
+sidebar.addEventListener('click', function(e) {
+  // Close sidebar if background is clicked (not if sidebar-content is clicked)
+  if (e.target === sidebar && window.innerWidth <= 900) {
+    sidebar.classList.remove('open');
+  }
+});
+// Also close sidebar if clicking outside (mobile)
+document.addEventListener('click', function(e) {
+  if (
+      window.innerWidth <= 900 &&
+      sidebar.classList.contains('open') &&
+      !sidebar.contains(e.target) &&
+      e.target !== sidebarToggle
+  ) {
+    sidebar.classList.remove('open');
+  }
+});
 
 // Logout/change name button handler
 document.getElementById('logout-btn').addEventListener('click', async function() {
   const oldName = localStorage.getItem('chatUserName');
   if (oldName) await releaseNameLock(oldName);
   localStorage.removeItem('chatUserName');
-  updateSidebarUsername('');
-  // Prompt for a new name and reload UI with new name
+  updateSidebarUI('');
   userName = await promptForUniqueName();
-  updateSidebarUsername(userName);
+  updateSidebarUI(userName);
 });
 
 // Main chat logic
 let userName;
 (async function () {
   userName = await getUserName();
-  updateSidebarUsername(userName);
+  updateSidebarUI(userName);
 
   // Render new messages
   function renderMessage(msg) {

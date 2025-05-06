@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<aside class="sidebar">
+<button id="sidebar-toggle" aria-label="Open Sidebar">☰</button>
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-content">
-        <div class="user-info">
-            <span id="sidebar-username"></span>
+        <div>
+            <div class="sidebar-group">Defuntotrons</div>
+            <div class="sidebar-group">PVP<br>Enabled</div>
         </div>
-        <button id="logout-btn" class="sidebar-btn">Logout / Change Name</button>
+        <div id="kyue-btn-container"></div>
+        <div id="sparrow-btn-container"></div>
+        <button id="logout-btn" class="sidebar-btn">Change<br>Name</button>
     </div>
 </aside>
 <main class="main-content">
