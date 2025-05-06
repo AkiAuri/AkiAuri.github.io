@@ -4,9 +4,30 @@ const chatForm = document.getElementById("chat-form");
 const messageInput = document.getElementById("message");
 const sidebarGroups = document.querySelectorAll('.sidebar-group');
 
-let currentChannel = "defunctotrons";
-let username = localStorage.getItem('username') || prompt("Enter your name:") || "Anonymous";
-localStorage.setItem('username', username);
+let currentChannel = "defuntotrons";
+
+function validateName(name) {
+  return (name || "")
+      .replace(/[^a-zA-Z0-9]/g, "")
+      .slice(0, 20);
+}
+
+function promptForName(message = "Enter your name:") {
+  let name;
+  do {
+    name = prompt(message) || "";
+    name = validateName(name);
+    if (!name) alert("Name must be 1-20 alphanumeric characters (a-z, A-Z, 0-9) only.");
+  } while (!name);
+  return name;
+}
+
+let username = localStorage.getItem('username');
+username = validateName(username);
+if (!username) {
+  username = promptForName();
+  localStorage.setItem('username', username);
+}
 
 function renderMessage({ timestamp, name, text }) {
   const dateStr = new Date(timestamp).toLocaleString();
@@ -49,7 +70,7 @@ chatForm.addEventListener("submit", e => {
 
 // Change name
 document.getElementById("logout-btn").onclick = () => {
-  const newName = prompt("Enter new name:");
+  const newName = promptForName("Enter new name:");
   if (newName) {
     username = newName;
     localStorage.setItem('username', username);
