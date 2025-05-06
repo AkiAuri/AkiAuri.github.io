@@ -7,7 +7,22 @@
 </head>
 <body>
     <h1>Welcome to My Website</h1>
+
+    <div id="chatbox" class="chatbox"></div>
+    <input id="name" type="text" placeholder="Name" />
+    <input id="message" type="text" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+
     <button id="clickMe">Click Me!</button>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <!-- Firebase init (obfuscated) -->
+    <script src="firebase-client.js"></script>
+    <!-- Chat logic -->
+    <script src="chat.js"></script>
+    <!-- Your old script -->
     <script src="script.js"></script>
 </body>
 </html>
