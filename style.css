@@ -164,6 +164,15 @@ body.no-sidebar .chatbox {
 
 /* Responsive tweaks */
 @media (max-width: 700px) {
+    #sidebar-toggle {
+        display: block;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
     .main-content {
         margin-left: 0;
         padding: 1rem;
