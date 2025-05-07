@@ -3,8 +3,14 @@ const chatbox = document.getElementById("chatbox");
 const chatForm = document.getElementById("chat-form");
 const messageInput = document.getElementById("message");
 const sidebarGroups = document.querySelectorAll('.sidebar-group');
+const title = document.querySelector('.title');
 
 let currentChannel = "defunctotrons";
+
+const chatNames = {
+  defunctotrons: 'NA',
+  pvpenabled: 'SEA'
+};
 
 function validateName(name) {
   return (name || "")
@@ -78,6 +84,11 @@ function fetchAndListen(channel) {
   });
 }
 
+function updateTitleForChannel(channel) {
+  const region = chatNames[channel] || '';
+  title.textContent = 'Dollistan Notes' + (region ? ' - ' + region : ':');
+}
+
 // Sidebar switching
 sidebarGroups.forEach(group => {
   group.addEventListener("click", () => {
@@ -86,6 +97,7 @@ sidebarGroups.forEach(group => {
     sidebarGroups.forEach(g => g.classList.remove('active'));
     group.classList.add('active');
     maybeAddPurgeButton(); // Update button on channel switch
+    updateTitleForChannel(currentChannel); // Update title
   });
 });
 
@@ -115,3 +127,4 @@ logoutBtn.onclick = () => {
 
 // Initial fetch
 fetchAndListen(currentChannel);
+updateTitleForChannel(currentChannel);
