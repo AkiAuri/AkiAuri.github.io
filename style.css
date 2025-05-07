@@ -163,6 +163,11 @@ body.no-sidebar .chatbox {
     min-height: 0;
 }
 
+/* Hide sidebar when .no-sidebar is set, on all screen sizes */
+body.no-sidebar .sidebar {
+    transform: translateX(-100%);
+}
+
 /* Responsive tweaks */
 @media (max-width: 700px) {
     #sidebar-toggle {
