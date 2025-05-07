@@ -51,6 +51,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 2em;
+    margin-top: 3.5rem; /* Add space below the toggle button */
 }
 
 .sidebar-group {
