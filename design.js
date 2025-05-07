@@ -4,12 +4,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
+    function updateSidebarToggleIcon() {
+        const isOpen = !document.body.classList.contains('no-sidebar');
+        sidebarToggle.textContent = isOpen ? '←' : '→';
+        sidebarToggle.setAttribute('aria-label', isOpen ? 'Close Sidebar' : 'Open Sidebar');
+    }
+
     function openSidebar() {
         sidebar.classList.add('open');
         sidebar.setAttribute('aria-hidden', 'false');
         sidebarToggle.setAttribute('aria-expanded', 'true');
         sidebarBackdrop.classList.add('active');
         document.body.classList.remove('no-sidebar'); // Show sidebar
+        updateSidebarToggleIcon();
     }
 
     function closeSidebar() {
@@ -18,12 +25,14 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebarToggle.setAttribute('aria-expanded', 'false');
         sidebarBackdrop.classList.remove('active');
         document.body.classList.add('no-sidebar'); // Hide sidebar, expand chat
+        updateSidebarToggleIcon();
     }
 
     // On load, always start with sidebar closed
     function setInitialSidebarState() {
         document.body.classList.add('no-sidebar');
         sidebar.classList.remove('open');
+        updateSidebarToggleIcon();
     }
     setInitialSidebarState();
 
