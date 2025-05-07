@@ -58,7 +58,7 @@ body.no-sidebar #sidebar-toggle {
 
 #sidebar-fab {
     position: absolute;
-    left: -0.9rem;
+    left: 1rem;
     top: 5.5rem;
     width: 1.7rem;
     height: 1.7rem;
@@ -81,13 +81,14 @@ body.no-sidebar #sidebar-fab {
 
 /* Floating, modern sidebar overhaul */
 .sidebar-card {
-    position: absolute;
-    top: 2.5rem;
+    position: relative;
     left: 0;
+    margin-left: 2rem;
+    margin-right: 1.5rem;
     width: 220px;
     min-width: 160px;
     max-width: 90vw;
-    height: calc(100% - 2.5rem);
+    height: auto;
     background: #111;
     border: 1px solid #222;
     border-radius: 0 1.1rem 1.1rem 0; /* Only right side rounded */
@@ -96,21 +97,24 @@ body.no-sidebar #sidebar-fab {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    transition: transform 0.22s cubic-bezier(.4,1.3,.6,1), opacity 0.18s;
-    opacity: 1;
-    transform: translateX(-110%);
-    pointer-events: none;
-}
-.sidebar-card.open {
-    transform: translateX(0);
+    transition: opacity 0.18s, margin 0.2s, width 0.2s;
     opacity: 1;
     pointer-events: auto;
 }
+.sidebar-card.open {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 90vw;
+    max-width: 90vw;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 0 0 #23272a;
+}
 
 body.no-sidebar .sidebar-card {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-110%);
+    display: none;
 }
 
 .sidebar-content {
@@ -177,13 +181,13 @@ body.no-sidebar .sidebar-card {
 }
 
 .pda-container-wrapper {
-    position: relative;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     width: 100%;
     min-width: 0;
     flex: 1;
+    position: relative;
 }
 
 @media (max-width: 700px) {
@@ -195,7 +199,7 @@ body.no-sidebar .sidebar-card {
 
 /* Make the pda-container fill the available vertical space */
 .pda-container {
-    flex: 1;
+    flex: 1 1 0%;
     min-width: 0;
     min-height: 0;
     display: flex;
@@ -209,6 +213,15 @@ body.no-sidebar .sidebar-card {
     padding: 1em;
     position: relative;
     z-index: 1;
+    transition: width 0.2s;
+}
+
+body:not(.no-sidebar) .pda-container {
+    max-width: calc(100vw - 260px - 3.5rem); /* sidebar width + margins */
+}
+
+body.no-sidebar .pda-container {
+    max-width: 100vw;
 }
 
 /* Make chatbox fill all space above input */
@@ -277,9 +290,7 @@ body.no-sidebar .chatbox {
 
 /* Hide sidebar when .no-sidebar is set, on all screen sizes */
 body.no-sidebar .sidebar-card {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-110%);
+    display: none;
 }
 
 /* Responsive tweaks */
@@ -288,21 +299,45 @@ body.no-sidebar .sidebar-card {
         flex-direction: column;
     }
     .sidebar-card {
-        width: 100%;
-        max-width: 100vw;
-        min-width: 0;
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        margin-left: 0;
         margin-right: 0;
-        margin-bottom: 1rem;
+        width: 90vw;
+        max-width: 90vw;
         border-radius: 1.1rem;
+        z-index: 1200;
+        display: none;
+    }
+    .sidebar-card.open {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 90vw;
+        max-width: 90vw;
+        margin-left: 0;
+        margin-right: 0;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 0 0 #23272a;
     }
     body.no-sidebar .sidebar-card {
-        transform: translateY(-110%);
-        margin-bottom: -2.5rem;
+        display: none;
+    }
+    .pda-container-wrapper {
+        flex-direction: column;
+    }
+    .pda-container {
+        max-width: 100vw;
     }
     #sidebar-toggle {
         right: 1rem;
         top: -2.2rem;
         border-radius: 0.7em 0.7em 0 0.7em;
+    }
+    #sidebar-fab {
+        left: 0.5rem;
+        top: 4.5rem;
     }
 }
 
@@ -319,7 +354,7 @@ body.no-sidebar .sidebar-card {
         border-radius: 1.1rem;
     }
     #sidebar-fab {
-        left: -0.7rem;
+        left: 0.5rem;
         top: 4.5rem;
     }
     .main-content {
