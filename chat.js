@@ -57,9 +57,15 @@ function maybeAddPurgeButton() {
 maybeAddPurgeButton();
 
 function renderMessage({ timestamp, name, text }) {
-  const dateStr = new Date(timestamp).toLocaleString();
+  const d = new Date(timestamp);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  // Always use 207X for year
+  const year = '207' + (d.getFullYear() % 10);
+  const dateStr = `[${day}/${month}/${year}]`;
   const msgDiv = document.createElement("div");
-  msgDiv.textContent = `[${dateStr}] - ${name}: ${text}`;
+  msgDiv.className = "bbs-message";
+  msgDiv.innerHTML = `<span class='bbs-date'>${dateStr}</span> <span class='bbs-user'>${name}</span><span class='bbs-sep'>:</span> <span class='bbs-text'>${text}</span>`;
   chatbox.appendChild(msgDiv);
 }
 

@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
+    letter-spacing: 0.03em;
     background: #111;
     color: #fff;
     box-sizing: border-box;
@@ -27,13 +30,22 @@ body {
     z-index: 1100;
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 2rem;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
+    font-size: 2.1em;
     background: #181818;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
+    color: #7fffd4;
+    border: 1.5px solid #222;
+    border-radius: 0.7em;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+    padding: 0.1em 0.5em;
     cursor: pointer;
-    /* display: none; /* Hidden on desktop by default, shown on mobile */
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+#sidebar-toggle:hover {
+    background: #23272a;
+    color: #fff;
+    border-color: #7fffd4;
 }
 
 /* Floating, modern sidebar overhaul */
@@ -53,6 +65,8 @@ body {
     justify-content: space-between;
     transform: translateX(0);
     transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
+    letter-spacing: 0.03em;
 }
 
 .sidebar-content {
@@ -71,10 +85,10 @@ body {
     padding: 0.7em 0.8em;
     transition: background 0.2s;
     border-radius: 0.5em;
-    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
     font-size: 1.08em;
     color: #fff;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.03em;
     line-height: 1.7;
 }
 .sidebar-group.active, .sidebar-group:hover {
@@ -88,7 +102,8 @@ body {
     border: none;
     font-size: 1em;
     cursor: pointer;
-    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
+    letter-spacing: 0.03em;
     padding: 0.7em 0.8em;
     border-radius: 0.5em;
     transition: background 0.2s;
@@ -106,6 +121,8 @@ body {
     min-width: 0;
     min-height: 0;
     transition: margin-left 0.2s;
+    font-family: 'Share Tech Mono', 'Fira Mono', 'Consolas', monospace !important;
+    letter-spacing: 0.03em;
 }
 
 @media (max-width: 700px) {
@@ -245,4 +262,28 @@ body.no-sidebar .sidebar {
     z-index: 900;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.4);
+}
+
+/* BBS-style message formatting */
+.bbs-message {
+    padding: 0.2em 0;
+    border-bottom: 1px dotted #222;
+    font-size: 1.08em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.bbs-date {
+    color: #7fffd4;
+    margin-right: 0.5em;
+}
+.bbs-user {
+    color: #ffb347;
+    margin-right: 0.3em;
+}
+.bbs-sep {
+    color: #fff;
+    margin-right: 0.3em;
+}
+.bbs-text {
+    color: #fff;
 }
