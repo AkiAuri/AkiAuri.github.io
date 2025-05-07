@@ -20,15 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.add('no-sidebar'); // Hide sidebar, expand chat
     }
 
-    // On load, if window is wide, show sidebar; if not, hide it
+    // On load, always start with sidebar closed
     function setInitialSidebarState() {
-        if (window.innerWidth > 700) {
-            document.body.classList.remove('no-sidebar');
-            sidebar.classList.remove('open');
-        } else {
-            document.body.classList.add('no-sidebar');
-            sidebar.classList.remove('open');
-        }
+        document.body.classList.add('no-sidebar');
+        sidebar.classList.remove('open');
     }
     setInitialSidebarState();
 
@@ -40,15 +35,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Close sidebar when clicking backdrop or when resizing to desktop
+    // Close sidebar when clicking backdrop or resizing window
     sidebarBackdrop.addEventListener('click', closeSidebar);
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 700) {
-            closeSidebar();
-            document.body.classList.remove('no-sidebar');
-        } else {
-            closeSidebar();
-        }
+        closeSidebar();
     });
 
     // Optional: close sidebar with escape key
