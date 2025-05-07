@@ -29,20 +29,23 @@ body {
     /* display: none; /* Hidden on desktop by default, shown on mobile */
 }
 
+/* Floating, modern sidebar overhaul */
 .sidebar {
     position: fixed;
-    left: 0;
-    top: 0;
+    left: 1.5rem;
+    top: 1.5rem;
     width: 180px;
-    height: 100vh;
-    background: #141414;
-    border-right: 1px solid #222;
+    height: calc(100vh - 3rem);
+    background: #181a1b;
+    border: 1.5px solid rgba(255,255,255,0.07);
+    border-radius: 1.1rem;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 0 0 #23272a;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transform: translateX(0);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .sidebar-content {
@@ -50,28 +53,41 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2em;
-    margin-top: 3.5rem; /* Add space below the toggle button */
+    gap: 2.5em;
+    margin-top: 2.5rem;
+    padding: 0 1.1em 1.1em 1.1em;
 }
 
 .sidebar-group {
-    margin: 20px 0;
+    margin: 1.5em 0;
     cursor: pointer;
-    padding: 10px;
+    padding: 0.7em 0.8em;
     transition: background 0.2s;
-    border-radius: 0.3em;
+    border-radius: 0.5em;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 1.08em;
+    color: #fff;
+    letter-spacing: 0.01em;
+    line-height: 1.7;
 }
 .sidebar-group.active, .sidebar-group:hover {
-    background: #222;
+    background: #23272a;
 }
 
 .sidebar-btn {
-    margin: 10px;
+    margin: 1.5em 0 0 0;
     background: none;
     color: #fff;
     border: none;
     font-size: 1em;
     cursor: pointer;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    padding: 0.7em 0.8em;
+    border-radius: 0.5em;
+    transition: background 0.2s;
+}
+.sidebar-btn:hover {
+    background: #23272a;
 }
 
 .main-content {
@@ -165,7 +181,8 @@ body.no-sidebar .chatbox {
 
 /* Hide sidebar when .no-sidebar is set, on all screen sizes */
 body.no-sidebar .sidebar {
-    transform: translateX(-100%);
+    transform: translateX(-250px);
+    box-shadow: none;
 }
 
 /* Responsive tweaks */
@@ -174,10 +191,15 @@ body.no-sidebar .sidebar {
         display: block;
     }
     .sidebar {
-        transform: translateX(-100%);
+        left: 0.5rem;
+        top: 0.5rem;
+        width: 90vw;
+        max-width: 320px;
+        height: calc(100vh - 1rem);
+        border-radius: 1.1rem;
     }
-    .sidebar.open {
-        transform: translateX(0);
+    body.no-sidebar .sidebar {
+        transform: translateX(-110vw);
     }
     .main-content {
         margin-left: 0;
