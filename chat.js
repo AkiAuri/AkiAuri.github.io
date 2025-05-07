@@ -29,6 +29,33 @@ if (!username) {
   localStorage.setItem('username', username);
 }
 
+// Add Purge Chat button if username is Sparrow
+function maybeAddPurgeButton() {
+  let btn = document.getElementById('purge-btn');
+  if (username === 'Sparrow') {
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'purge-btn';
+      btn.textContent = 'Purge Chat';
+      btn.className = 'sidebar-btn';
+      btn.style.marginTop = '1em';
+      btn.onclick = function() {
+        if (confirm('Are you sure you want to purge all messages in this channel?')) {
+          db.ref('chats/' + currentChannel).remove();
+          chatbox.innerHTML = '';
+        }
+      };
+      // Insert after logout button
+      const logoutBtn = document.getElementById('logout-btn');
+      logoutBtn.parentNode.insertBefore(btn, logoutBtn.nextSibling);
+    }
+  } else if (btn) {
+    btn.remove();
+  }
+}
+
+maybeAddPurgeButton();
+
 function renderMessage({ timestamp, name, text }) {
   const dateStr = new Date(timestamp).toLocaleString();
   const msgDiv = document.createElement("div");
@@ -52,6 +79,7 @@ sidebarGroups.forEach(group => {
     fetchAndListen(currentChannel);
     sidebarGroups.forEach(g => g.classList.remove('active'));
     group.classList.add('active');
+    maybeAddPurgeButton(); // Update button on channel switch
   });
 });
 
@@ -69,11 +97,13 @@ chatForm.addEventListener("submit", e => {
 });
 
 // Change name
-document.getElementById("logout-btn").onclick = () => {
+const logoutBtn = document.getElementById("logout-btn");
+logoutBtn.onclick = () => {
   const newName = promptForName("Enter new name:");
   if (newName) {
     username = newName;
     localStorage.setItem('username', username);
+    maybeAddPurgeButton();
   }
 };
 
