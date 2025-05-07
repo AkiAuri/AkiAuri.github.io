@@ -1,5 +1,4 @@
 (function(){
-  // New base64: [apiKey, authDomain, projectId, databaseURL, storageBucket, messagingSenderId, appId, measurementId]
   var a="W3siMCI6IkFweUl6YVN5RGhKTU1XYWttWk1ETnBJZ2s2VElYZ0JaaldubldFb1QiLCIxIjoiZG9sbGlzdGFubm90ZXMuZmlyZWJhcHAuY29tIiwiMiI6ImRvbGxpc3Rhbm5vdGVzIiwiMyI6Imh0dHBzOi8vZG9sbGlzdGFubm90ZXMtZGVmYXVsdC1ydGRiLmFzaWEtc291dGhlYXN0MS5maXJlYmFzZWRhdGFiYXNlLmFwcC8iLCI0IjoiZG9sbGlzdGFubm90ZXMuZmlyZWJhc2VzdG9yYWdlLmFwcCIsIjUiOiI2MDEwNjk0MTU2NjQiLCI2IjoiMTo2MDEwNjk0MTU2NjQ6d2ViOjM1Y2RjMjNjYzMxZDBiYzRiYzY2MzUiLCI3IjoiRy00QzJYWUVEUzFFIn1d";
   var b=function(c){return window.atob?atob(c):c;};
   var d=function(e){return JSON.parse(e)[0];};

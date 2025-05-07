@@ -12,12 +12,14 @@ const chatNames = {
   pvpenabled: 'SEA'
 };
 
+// Validate a username (alphanumeric, max 20 chars)
 function validateName(name) {
   return (name || "")
       .replace(/[^a-zA-Z0-9]/g, "")
       .slice(0, 20);
 }
 
+// Prompt user for a valid name
 function promptForName(message = "Enter your name:") {
   let name;
   do {
@@ -62,6 +64,7 @@ function maybeAddPurgeButton() {
 
 maybeAddPurgeButton();
 
+// Render a chat message in BBS style
 function renderMessage({ timestamp, name, text }) {
   const d = new Date(timestamp);
   const day = String(d.getDate()).padStart(2, '0');
@@ -75,6 +78,7 @@ function renderMessage({ timestamp, name, text }) {
   chatbox.appendChild(msgDiv);
 }
 
+// Listen for and display messages for the current channel
 function fetchAndListen(channel) {
   chatbox.innerHTML = "";
   db.ref("chats/" + channel).off(); // Remove previous listeners
@@ -84,6 +88,7 @@ function fetchAndListen(channel) {
   });
 }
 
+// Update the chat title based on the selected channel
 function updateTitleForChannel(channel) {
   const region = chatNames[channel] || '';
   title.textContent = 'Dollistan Notes' + (region ? ' - ' + region : ':');
