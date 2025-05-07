@@ -4,7 +4,7 @@ const chatForm = document.getElementById("chat-form");
 const messageInput = document.getElementById("message");
 const sidebarGroups = document.querySelectorAll('.sidebar-group');
 
-let currentChannel = "defuntotrons";
+let currentChannel = "defunctotrons";
 
 function validateName(name) {
   return (name || "")
