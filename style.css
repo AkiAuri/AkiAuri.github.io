@@ -150,8 +150,8 @@ body {
 /* Fill the whole viewport if sidebar is hidden */
 body.no-sidebar .main-content {
     margin-left: 0 !important;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
 }
 body.no-sidebar .pda-container {
     width: 100%;
