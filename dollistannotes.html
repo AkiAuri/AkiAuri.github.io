@@ -2,45 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dollistan Notes</title>
+    <title>Dollistan Notes - Under Construction</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .under-construction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            text-align: center;
+        }
+        .under-construction h1 {
+            font-size: 2.5em;
+            color: #7fffd4;
+            margin-bottom: 0.5em;
+        }
+        .under-construction p {
+            font-size: 1.3em;
+            color: #fff;
+            margin-bottom: 2em;
+        }
+        .under-construction img {
+            width: 120px;
+            opacity: 0.7;
+            margin-bottom: 1.5em;
+        }
+    </style>
 </head>
 <body class="no-sidebar">
-<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 <main class="main-content">
-    <h1 class="title" style="margin-top:2.5rem;">Dollistan Notes:</h1>
-    <div class="pda-container-wrapper">
-        <aside class="sidebar-card" id="sidebar">
-            <button id="sidebar-toggle" aria-label="Toggle Sidebar"></button>
-            <div class="sidebar-content">
-                <div>
-                    <div class="sidebar-group" onclick="window.location.href='index.html'">Defunctotrons</div>
-                    <div class="sidebar-group" onclick="window.location.href='index.html'">PVP<br>Enabled</div>
-                    <div class="sidebar-group" onclick="window.location.href='dollistannotes.html'">Dollistan Notes</div>
-                </div>
-                <div id="dollistan-notes-btn-container"></div>
-                <div id="kyue-btn-container"></div>
-                <div id="sparrow-btn-container"></div>
-                <button id="logout-btn" class="sidebar-btn">Change<br>Name</button>
-            </div>
-        </aside>
-        <div class="pda-container">
-            <div id="notes-feed" class="notes-feed"></div>
-            <form id="new-note-form" class="chat-input-bar" autocomplete="off" style="flex-direction:column;gap:0.5em;margin-top:1em;">
-                <input id="note-title" type="text" placeholder="Title (optional)" maxlength="60" style="margin-bottom:0.5em;" />
-                <textarea id="note-content" placeholder="Write your note here..." required style="min-height:4em;"></textarea>
-                <button type="submit" class="sidebar-btn" style="margin-top:0.5em;">Post</button>
-            </form>
-            <div id="thread-view" style="display:none;"></div>
-        </div>
-        <button id="sidebar-fab" aria-label="Open Sidebar"></button>
+    <div class="under-construction">
+        <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Under Construction" />
+        <h1>Under Construction</h1>
+        <p>The Dollistan Notes board is being built.<br>Please check back soon!</p>
+        <button class="sidebar-btn" onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 </main>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-<script src="firebase-client.js"></script>
-<script src="design.js"></script>
-<script src="dollistannotes.js"></script>
 </body>
 </html>
