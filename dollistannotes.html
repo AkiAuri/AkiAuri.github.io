@@ -18,19 +18,21 @@
                     <div class="sidebar-group" onclick="window.location.href='index.html'">Defunctotrons</div>
                     <div class="sidebar-group" onclick="window.location.href='index.html'">PVP<br>Enabled</div>
                     <div class="sidebar-group" onclick="window.location.href='dollistannotes.html'">Dollistan Notes</div>
-                    <div id="dollistan-notes-btn-container"></div>
                 </div>
+                <div id="dollistan-notes-btn-container"></div>
                 <div id="kyue-btn-container"></div>
                 <div id="sparrow-btn-container"></div>
                 <button id="logout-btn" class="sidebar-btn">Change<br>Name</button>
             </div>
         </aside>
         <div class="pda-container">
-            <div id="chatbox" class="chatbox"></div>
-            <form id="chat-form" class="chat-input-bar" autocomplete="off">
-                <input id="message" type="text" placeholder="Text Message Here" autocomplete="off" />
-                <button id="sendBtn" type="submit" aria-label="Send">></button>
+            <div id="notes-feed" class="notes-feed"></div>
+            <form id="new-note-form" class="chat-input-bar" autocomplete="off" style="flex-direction:column;gap:0.5em;margin-top:1em;">
+                <input id="note-title" type="text" placeholder="Title (optional)" maxlength="60" style="margin-bottom:0.5em;" />
+                <textarea id="note-content" placeholder="Write your note here..." required style="min-height:4em;"></textarea>
+                <button type="submit" class="sidebar-btn" style="margin-top:0.5em;">Post</button>
             </form>
+            <div id="thread-view" style="display:none;"></div>
         </div>
         <button id="sidebar-fab" aria-label="Open Sidebar"></button>
     </div>
@@ -39,7 +41,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="firebase-client.js"></script>
 <script src="design.js"></script>
-<script src="chat.js"></script>
 <script src="dollistannotes.js"></script>
 </body>
 </html>

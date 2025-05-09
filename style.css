@@ -411,3 +411,96 @@ body.no-sidebar .sidebar-card {
 .bbs-text {
     color: #fff;
 }
+
+/* --- Dollistan Notes custom styles for horizontal cards --- */
+.notes-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    margin-bottom: 1.5em;
+}
+.note-card {
+    background: #181818;
+    border: 1px solid #23272a;
+    border-radius: 0.7em;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    padding: 1em 1.2em;
+    margin: 0 auto;
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    transition: box-shadow 0.2s;
+}
+.note-card:hover {
+    box-shadow: 0 4px 16px 0 rgba(0,255,255,0.10);
+    border-color: #7fffd4;
+}
+.note-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7em;
+    align-items: center;
+    font-size: 1.05em;
+    margin-bottom: 0.2em;
+}
+.note-id {
+    color: #7fffd4;
+    font-weight: bold;
+}
+.note-title {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.note-author {
+    color: #ffb347;
+    font-size: 0.98em;
+}
+.note-card-content {
+    color: #fff;
+    font-size: 1.08em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.thread-main {
+    border: 2px solid #7fffd4;
+}
+.thread-replies {
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+.reply-card {
+    border-left: 4px solid #ffb347;
+    background: #151515;
+    margin-left: 1.5em;
+    box-shadow: none;
+}
+.note-reply-btn {
+    align-self: flex-end;
+    margin-top: 0.5em;
+    background: #23272a;
+    color: #7fffd4;
+    border: 1px solid #23272a;
+    border-radius: 0.3em;
+    font-size: 1em;
+    padding: 0.3em 1.2em;
+    transition: background 0.2s, color 0.2s;
+}
+.note-reply-btn:hover {
+    background: #7fffd4;
+    color: #181818;
+}
+@media (max-width: 800px) {
+    .note-card, .thread-main {
+        max-width: 98vw;
+        padding: 0.7em 0.5em;
+    }
+    .reply-card {
+        margin-left: 0.5em;
+    }
+}
