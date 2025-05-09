@@ -17,7 +17,6 @@
                 <div>
                     <div class="sidebar-group">Defunctotrons</div>
                     <div class="sidebar-group">PVP<br>Enabled</div>
-                    <div class="sidebar-group" id="notes-group">Dollistan Notes</div>
                 </div>
                 <div id="kyue-btn-container"></div>
                 <div id="sparrow-btn-container"></div>
@@ -30,27 +29,6 @@
                 <input id="message" type="text" placeholder="Text Message Here" autocomplete="off" />
                 <button id="sendBtn" type="submit" aria-label="Send">></button>
             </form>
-            <!-- Dollistan Notes Panel (Post/Reply Board) -->
-            <div id="notes-panel" style="display:none;">
-                <div id="notes-list-section">
-                    <button id="new-post-btn" class="notes-action-btn">New Post</button>
-                    <div id="notes-list"></div>
-                </div>
-                <form id="new-post-form" style="display:none;" autocomplete="off">
-                    <input id="post-title" type="text" placeholder="Post Title" maxlength="64" required />
-                    <textarea id="post-body" placeholder="Write your post..." maxlength="2048" required></textarea>
-                    <button type="submit">Submit</button>
-                </form>
-                <div id="post-view" style="display:none;">
-                    <button id="back-to-list" class="notes-action-btn">< Back</button>
-                    <div id="post-content"></div>
-                    <div id="replies-list"></div>
-                    <form id="reply-form" autocomplete="off">
-                        <textarea id="reply-message" placeholder="Write a reply..." maxlength="1024" required></textarea>
-                        <button type="submit">Reply</button>
-                    </form>
-                </div>
-            </div>
         </div>
         <button id="sidebar-fab" aria-label="Open Sidebar"></button>
     </div>
